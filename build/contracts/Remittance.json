@@ -1,0 +1,174 @@
+{
+  "contractName": "Remittance",
+  "abi": [
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a72305820ffc06c5a37b637e4cc6f2d228215f55e9b9bd3e2f08b976330a963a99f0f41ee0029",
+  "deployedBytecode": "0x6080604052600080fd00a165627a7a72305820ffc06c5a37b637e4cc6f2d228215f55e9b9bd3e2f08b976330a963a99f0f41ee0029",
+  "sourceMap": "26:294:0:-;;;279:39;8:9:-1;5:2;;;30:1;27;20:12;5:2;279:39:0;26:294;;;;;;",
+  "deployedSourceMap": "26:294:0:-;;;;;",
+  "source": "pragma solidity ^0.4.4;\n\n\ncontract Remittance {\n  /* // events are triggere within functions\n  event remittanceCreated(address recipient, uint value); // add a a deadline later\n  event remittanceWithdrawn(address recipient, uint value);\n  // Create a cancelled event later */\n\n  constructor() {\n    // constructor\n\n  }\n}\n",
+  "sourcePath": "/Users/randallkanna/Documents/code/eth/remittance/contracts/Remittance.sol",
+  "ast": {
+    "absolutePath": "/Users/randallkanna/Documents/code/eth/remittance/contracts/Remittance.sol",
+    "exportedSymbols": {
+      "Remittance": [
+        6
+      ]
+    },
+    "id": 7,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 6,
+        "linearizedBaseContracts": [
+          6
+        ],
+        "name": "Remittance",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 4,
+              "nodeType": "Block",
+              "src": "293:25:0",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 5,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "290:2:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "293:0:0"
+            },
+            "scope": 6,
+            "src": "279:39:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 7,
+        "src": "26:294:0"
+      }
+    ],
+    "src": "0:321:0"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/randallkanna/Documents/code/eth/remittance/contracts/Remittance.sol",
+    "exportedSymbols": {
+      "Remittance": [
+        6
+      ]
+    },
+    "id": 7,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 6,
+        "linearizedBaseContracts": [
+          6
+        ],
+        "name": "Remittance",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 4,
+              "nodeType": "Block",
+              "src": "293:25:0",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 5,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "290:2:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "293:0:0"
+            },
+            "scope": 6,
+            "src": "279:39:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 7,
+        "src": "26:294:0"
+      }
+    ],
+    "src": "0:321:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.23+commit.124ca40d.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-05-17T02:07:09.990Z"
+}
