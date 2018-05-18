@@ -19,16 +19,16 @@ contract('Remittance', function(accounts) {
   });
 
 
-  it("should withdraw funds out of the owners account", async function() {
-    const sendersAccount = web3.eth.getBalance(sendAccount).toNumber()
-
-    // await fundRaise.sendTransaction({ value: 1e+18, from: donor })
-
-    // ownersAccount = await contract.getBalance.call(sendAccount);
-    console.log(sendersAccount);
-
-    // assert.strictEqual(recipient1PreBalance.toNumber(), 0, 'Recipient 1 should have 0 balance in test start');
-
-
-  });
+  // it("should withdraw funds out of the owners account", async function() {
+  //   var sendersAccountOriginalAmount = web3.eth.getBalance(sendAccount).toNumber()
+  //   var transferAmount = 0.02;
+  //
+  //   await contract.completeTransaction(sendAccount, transferAmount) // { value: 0.02, from: sendAccount }
+  //
+  //   var ownersAccountAfterTransfer = await contract.getBalance.call(sendAccount);
+  //
+  //   console.log(ownersAccountAfterTransfer);
+  //
+  //   assert.strictEqual(sendersAccountOriginalAmount - 0.02, ownersAccountAfterTransfer, 'should withdraw from owner account');
+  // });
 });

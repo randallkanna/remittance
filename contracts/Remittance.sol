@@ -13,19 +13,28 @@ contract Remittance {
   address public owner;
 
   constructor() {
-    owner = msg.sender;
+    /* owner = msg.sender; */
   }
 
-  function getBalance(address addr) public returns(uint) {
+  function createRemittance() {
+    // create a
+  }
+
+  function withdrawRemittance() {
+    
+  }
+
+
+  /* function cancelRemittance() {
+
+  } */
+
+  /* function getBalance(address addr) public returns(uint) {
     return balances[addr];
-  }
+  } */
 
-  function completeTransaction(address addr) public payable returns(uint) {
-    // take the owner
-  }
-
-  /* function withdrawFunds(address addr) public returns(bool) {
-
-    return true;
+  /* function completeTransaction(uint transferAmount, address ) public payable returns(bool) {
+    // take the owners funds and withdraw the transfer amount. hold the funds
+     return true;
   } */
 }
