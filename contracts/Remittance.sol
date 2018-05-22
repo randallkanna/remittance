@@ -2,39 +2,39 @@ pragma solidity ^0.4.4;
 
 
 contract Remittance {
+  // TODO: refactor to use a struct later
+  /* struct RemittanceFunds {
+    address owner;
+    address addressToBePaid;
+    uint amount;
+  } */
 
   mapping (address => uint) public balances;
 
-  /* // events are triggere within functions
-  event remittanceCreated(address recipient, uint value); // add a a deadline later
-  event remittanceWithdrawn(address recipient, uint value);
-  // Create a cancelled event later */
-
   address public owner;
+  uint public amountToSend;
+  bytes32 private puzzleSolution;
 
   constructor() {
-    /* owner = msg.sender; */
+    owner = msg.sender;
   }
 
-  function createRemittance() {
-    // create a
+  function createRemittance(bytes32 _puzzleSolution) payable returns(bool) { // bytes32 _puzzleSolution,
+    // TODO: refactor: create the struct representing the remittance later
+    require(msg.value > 0);
+    amountToSend = msg.value;
+    puzzleSolution = _puzzleSolution;
+
+    return true;
   }
 
-  function withdrawRemittance() {
-    
+  function completeRemittance() {
+      /* owner.transfer(amount); */
+      /* msg.sender.transfer(toPay); */
   }
 
-
+  // TODO: add a feature to allow original person to cancel transaction
   /* function cancelRemittance() {
 
-  } */
-
-  /* function getBalance(address addr) public returns(uint) {
-    return balances[addr];
-  } */
-
-  /* function completeTransaction(uint transferAmount, address ) public payable returns(bool) {
-    // take the owners funds and withdraw the transfer amount. hold the funds
-     return true;
   } */
 }
