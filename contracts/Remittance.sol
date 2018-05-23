@@ -2,12 +2,11 @@ pragma solidity ^0.4.4;
 
 
 contract Remittance {
-  // TODO: refactor to use a struct later
-  /* struct RemittanceFunds {
+  struct RemittanceFunds {
     address owner;
     address addressToBePaid;
     uint amount;
-  } */
+  }
 
   mapping (address => uint) public balances;
 
