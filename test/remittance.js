@@ -19,13 +19,13 @@ contract('Remittance', function(accounts) {
 
   it("should withdraw the funds out of the owners account on remittance contract withdrawal", async function() {
     var sendAmount = 1;
-    var _puzzleSolution = "abc"
+    var puzzleSolution = "abc"
 
-    await contract.createRemittance(recipientAccount, _puzzleSolution, { from: ownerAccount, value: sendAmount });
+    await contract.createRemittance(recipientAccount, puzzleSolution, { from: ownerAccount, value: sendAmount });
 
     var ownerAccountOriginalBalance = web3.eth.getBalance(ownerAccount).toNumber();
 
-    let transaction = await contract.completeRemittance();
+    let transaction = await contract.completeRemittance(puzzleSolution);
 
     var ownerAccountNewBalance = web3.eth.getBalance(ownerAccount).toNumber();
     var tx = await web3.eth.getTransaction(transaction.tx);
@@ -36,21 +36,32 @@ contract('Remittance', function(accounts) {
 
   it("should transfer to the paidUser after successful remittance", async function() {
       var sendAmount = 1;
-      var _puzzleSolution = "abc";
+      var puzzleSolution = "abc";
 
-      await contract.createRemittance(recipientAccount, _puzzleSolution, {from: ownerAccount, value: sendAmount });
+      await contract.createRemittance(recipientAccount, puzzleSolution, {from: ownerAccount, value: sendAmount });
 
       var recipientAccountOriginalBalance = web3.eth.getBalance(recipientAccount).toNumber();
 
-      let transaction = await contract.completeRemittance(); //TO DO: verify in code that recipient matches original
+      let transaction = await contract.completeRemittance(puzzleSolution); //TO DO: verify in code that recipient matches original
 
       var recipientAccountNewBalance = web3.eth.getBalance(recipientAccount).toNumber();
 
       assert.strictEqual(recipientAccountOriginalBalance + sendAmount, recipientAccountNewBalance, 'should transfer value to recipient address');
   });
 
+  it("should unlock contract and allow successful withdraw if both passwords are correct", async function() {
+
+  });
 
   it("should not unlock unless both passwords are correct", async function() {
-
+    // var sentAmount = 1;
+    // var _puzzleSolution = "ABC";
+    // var recipientPuzzle
+    //
+    // await contract.createRemittance();
+    //
+    // var recipientAccountOriginalBalance = web3.eth.getBalance(recipientAccount).toNumber();
+    //
+    // let transaction = await contract.completeRemittance(_puzzleSolution)
   });
 });
