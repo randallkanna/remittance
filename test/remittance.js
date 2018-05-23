@@ -1,7 +1,8 @@
 var Remittance = artifacts.require('../Remittance.sol');
 
 contract('Remittance', function(accounts) {
-  var sendAccount = accounts[0];
+  var ownerAccount = accounts[0];
+  var sendAccount = accounts[1];
 
   it("should assert true", function(done) {
     var remittance = Remittance.deployed();
@@ -18,11 +19,29 @@ contract('Remittance', function(accounts) {
 
 
   it("should withdraw the funds out of the owners account on remittance contract withdrawal", async function() {
-    
+    var sendAmount = 1;
+    var _puzzleSolution = "abc"
+
+    await contract.createRemittance(_puzzleSolution, { from: ownerAccount, value: sendAmount });
+
+    var ownerAccountOriginalBalance = web3.eth.getBalance(ownerAccount).toNumber();
+
+    let transaction = await contract.completeRemittance();
+
+    var ownerAccountNewBalance = web3.eth.getBalance(ownerAccount).toNumber();
+    var tx = await web3.eth.getTransaction(transaction.tx);
+    var gasUsed = tx.gasPrice.mul(transaction.receipt.gasUsed).toNumber();
+
+    assert.strictEqual(ownerAccountOriginalBalance - sendAmount - gasUsed, ownerAccountNewBalance, 'should withdraw from owner account');
   });
 
   it("should transfer to the paidUser after successful remittance", async function() {
       // return true;
+  });
+
+
+  it("should not unlock unless both passwords are correct", async function() {
+
   });
 
   //

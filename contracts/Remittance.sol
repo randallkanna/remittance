@@ -29,12 +29,10 @@ contract Remittance {
   }
 
   function completeRemittance() {
-      /* owner.transfer(amount); */
-      /* msg.sender.transfer(toPay); */
+    owner.transfer(amountToSend);
   }
 
   // TODO: add a feature to allow original person to cancel transaction
   /* function cancelRemittance() {
-
   } */
 }
