@@ -12,6 +12,7 @@ contract Remittance {
   mapping (address => uint) public balances;
 
   address public owner;
+  address public recipient;
   uint public amountToSend;
   bytes32 private puzzleSolution;
 
@@ -19,17 +20,16 @@ contract Remittance {
     owner = msg.sender;
   }
 
-  function createRemittance(bytes32 _puzzleSolution) payable returns(bool) { // bytes32 _puzzleSolution,
+  function createRemittance(address _recipient, bytes32 _puzzleSolution) payable {
     // TODO: refactor: create the struct representing the remittance later
     require(msg.value > 0);
     amountToSend = msg.value;
+    recipient = _recipient;
     puzzleSolution = _puzzleSolution;
-
-    return true;
   }
 
   function completeRemittance() {
-    owner.transfer(amountToSend);
+    msg.sender.transfer(amountToSend);
   }
 
   // TODO: add a feature to allow original person to cancel transaction

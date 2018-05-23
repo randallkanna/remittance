@@ -2,7 +2,7 @@ var Remittance = artifacts.require('../Remittance.sol');
 
 contract('Remittance', function(accounts) {
   var ownerAccount = accounts[0];
-  var sendAccount = accounts[1];
+  var recipientAccount = accounts[1];
 
   it("should assert true", function(done) {
     var remittance = Remittance.deployed();
@@ -17,12 +17,11 @@ contract('Remittance', function(accounts) {
     });
   });
 
-
   it("should withdraw the funds out of the owners account on remittance contract withdrawal", async function() {
     var sendAmount = 1;
     var _puzzleSolution = "abc"
 
-    await contract.createRemittance(_puzzleSolution, { from: ownerAccount, value: sendAmount });
+    await contract.createRemittance(recipientAccount, _puzzleSolution, { from: ownerAccount, value: sendAmount });
 
     var ownerAccountOriginalBalance = web3.eth.getBalance(ownerAccount).toNumber();
 
@@ -36,35 +35,22 @@ contract('Remittance', function(accounts) {
   });
 
   it("should transfer to the paidUser after successful remittance", async function() {
-      // return true;
+      var sendAmount = 1;
+      var _puzzleSolution = "abc";
+
+      await contract.createRemittance(recipientAccount, _puzzleSolution, {from: ownerAccount, value: sendAmount });
+
+      var recipientAccountOriginalBalance = web3.eth.getBalance(recipientAccount).toNumber();
+
+      let transaction = await contract.completeRemittance(); //TO DO: verify in code that recipient matches original
+
+      var recipientAccountNewBalance = web3.eth.getBalance(recipientAccount).toNumber();
+
+      assert.strictEqual(recipientAccountOriginalBalance + sendAmount, recipientAccountNewBalance, 'should transfer value to recipient address');
   });
 
 
   it("should not unlock unless both passwords are correct", async function() {
 
   });
-
-  //
-  // it("should withdraw the funds out of the owners account on remittance contract creation", async function() {
-  //   var sendAmount = 0.02;
-  //   var senderAccountOriginalAmount = web3.eth.getBalance(sendAccount).toNumber();
-  //
-  //   var test = await contract.createRemittance({ from: sendAccount, value: 0.02 })
-  //   console.log(test);
-  //
-  // });
-
-  // const bal = web3.eth.getBalance(owner)
-
-
-  // it("should withdraw funds out of the owners account", async function() {
-  //   var sendersAccountOriginalAmount = web3.eth.getBalance(sendAccount).toNumber()
-  //   var transferAmount = 0.02;
-  //
-  //   await contract.completeTransaction(sendAccount, transferAmount) // { value: 0.02, from: sendAccount }
-  //
-  //   var ownersAccountAfterTransfer = await contract.getBalance.call(sendAccount);
-  //
-  //   assert.strictEqual(sendersAccountOriginalAmount - 0.02, ownersAccountAfterTransfer, 'should withdraw from owner account');
-  // });
 });
