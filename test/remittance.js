@@ -35,33 +35,44 @@ contract('Remittance', function(accounts) {
   });
 
   it("should transfer to the paidUser after successful remittance", async function() {
-      var sendAmount = 1;
-      var puzzleSolution = "abc";
+    var sendAmount = 1;
+    var puzzleSolution = "abc";
 
-      await contract.createRemittance(recipientAccount, puzzleSolution, {from: ownerAccount, value: sendAmount });
+    await contract.createRemittance(recipientAccount, puzzleSolution, {from: ownerAccount, value: sendAmount });
 
-      var recipientAccountOriginalBalance = web3.eth.getBalance(recipientAccount).toNumber();
+    var recipientAccountOriginalBalance = web3.eth.getBalance(recipientAccount).toNumber();
 
-      let transaction = await contract.completeRemittance(puzzleSolution); //TO DO: verify in code that recipient matches original
+    let transaction = await contract.completeRemittance(puzzleSolution); //TO DO: verify in code that recipient matches original
 
-      var recipientAccountNewBalance = web3.eth.getBalance(recipientAccount).toNumber();
+    var recipientAccountNewBalance = web3.eth.getBalance(recipientAccount).toNumber();
 
-      assert.strictEqual(recipientAccountOriginalBalance + sendAmount, recipientAccountNewBalance, 'should transfer value to recipient address');
+    assert.strictEqual(recipientAccountOriginalBalance + sendAmount, recipientAccountNewBalance, 'should transfer value to recipient address');
   });
 
   it("should unlock contract and allow successful withdraw if both passwords are correct", async function() {
-
+      // var sentAmount = 1;
+      // var puzzleSolution = "Abc";
+      //
+      // await contract.createRemittance(recipientAccount, puzzleSolution, {from: ownerAccount, value: sendAmount });
+      //
+      //
+      //
+      // debugger;
   });
 
   it("should not unlock unless both passwords are correct", async function() {
-    // var sentAmount = 1;
-    // var _puzzleSolution = "ABC";
-    // var recipientPuzzle
+    // var sendAmount = 1;
+    // var puzzleSolution = "ABC";
+    // var falsePuzzleSolution = "123";
     //
-    // await contract.createRemittance();
+    // await contract.createRemittance(recipientAccount, puzzleSolution, {from: ownerAccount, value: sendAmount });
     //
     // var recipientAccountOriginalBalance = web3.eth.getBalance(recipientAccount).toNumber();
     //
-    // let transaction = await contract.completeRemittance(_puzzleSolution)
+    // let transaction = await contract.completeRemittance(falsePuzzleSolution)
+    //
+    // var recipientAccountNewBalance = web3.eth.getBalance(recipientAccount).toNumber();
+    //
+    // assert.strictEqual(recipientAccountOriginalBalance, recipientAccountNewBalance, 'should not transfer funds');
   });
 });
