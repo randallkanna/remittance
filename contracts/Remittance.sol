@@ -27,23 +27,20 @@ contract Remittance {
     remittances[_puzzleSolution] = RemittanceFunds(msg.sender, _recipient, msg.value, _puzzleSolution);
   }
 
-  function completeRemittance(bytes32 _userPuzzleSolution) {
+  function completeRemittance(bytes32 _userPuzzleSolution) returns (bool){
     userPuzzleSolution = _userPuzzleSolution;
 
     RemittanceFunds memory remittance = remittances[userPuzzleSolution];
 
-    /* bytes32 key = keccak256(recipient, keccak256(password)); */
-    /* RemittanceStruct memory forSender = remittances[key]; */
-     /* RemittanceStruct memory forSender = remittances[key]; */
-    /* RemittanceInstance memory r = getInstance(msg.sender,password); */
-      /* uint toPay = r.amount; */
-    /* RemittanceFunds memory remit = ; */
-
-    /* require(msg.sender == remit.recipient); */
     uint amountOwed = remittance.amountToSend;
+
+    address fundsRecipient = remittance.recipient;
+    /* require(msg.sender == fundsRecipient); */
 
     // if the puzzle Solution matches the original puzzle, accept it and allow money out
     msg.sender.transfer(amountOwed);
+
+    return true;
   }
 
   // TODO: add a feature to allow original person to cancel transaction
