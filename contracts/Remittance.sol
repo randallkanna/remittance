@@ -16,7 +16,7 @@ contract Remittance {
   /* address public recipient; */
   /* uint public amountToSend; */
   /* bytes32 private puzzleSolution; */
-  bytes32 private userPuzzleSolution;
+  /* bytes32 private userPuzzleSolution; */
 
   constructor() {
     owner = msg.sender;
@@ -28,16 +28,12 @@ contract Remittance {
   }
 
   function completeRemittance(bytes32 _userPuzzleSolution) returns (bool){
-    userPuzzleSolution = _userPuzzleSolution;
-
-    RemittanceFunds memory remittance = remittances[userPuzzleSolution];
+    RemittanceFunds memory remittance = remittances[_userPuzzleSolution];
 
     uint amountOwed = remittance.amountToSend;
 
-    address fundsRecipient = remittance.recipient;
-    /* require(msg.sender == fundsRecipient); */
+    require(_userPuzzleSolution == remittance.puzzleSolution);
 
-    // if the puzzle Solution matches the original puzzle, accept it and allow money out
     msg.sender.transfer(amountOwed);
 
     return true;

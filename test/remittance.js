@@ -60,6 +60,7 @@ contract('Remittance', function(accounts) {
       // debugger;
   });
 
+
   it("should not unlock unless both passwords are correct", async function() {
     // var sendAmount = 1;
     // var puzzleSolution = "ABC";
